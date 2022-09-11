@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2048 Game</title>
+  <meta name="apple-mobile-web-app-status-bar" content="#3d2963">
+  <meta name="theme-color" content="black">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="/2048.css?ver=1">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="top-header">
+      <div class="logo">2048</div>
+      <div class="score">You score:&nbsp;<span id="score">0</span></div>
+    </div>
+    <div class="manual">Use your arrow keys to move number blocks. Or you can use gestures on a mobile phone or tablet
+      =)</div>
+  </header>
+  <main>
+    <div class="background">
+      <div class="game-field" id="game-field">
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>Version game 1.0</p>
+    <p>Develop by <a href="https://virass.com" target="_blank">virass.com</a></p>
+  </footer>
+  <script src="/2048.js?v=1"></script>
+  <script>
+    /* Disable spring effect (effect after scrolling) on ios */
+    document.addEventListener("touchmove", function (e) {
+      e.preventDefault();
+    }, { passive: false });
+  </script>
+  <script>
+    window.addEventListener('load', () => {
+      registerSW();
+    });
+
+    async function registerSW() {
+      if ('serviceWorker' in navigator) {
+        try {
+          await navigator
+            .serviceWorker
+            .register('/serviceworker.js');
+        }
+        catch (e) {
+          console.log('SW registration failed');
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

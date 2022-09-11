@@ -1,0 +1,108 @@
+@font-face {
+  font-family:"Pacifico";
+  src: url("pacifico.ttf") format("truetype");
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 400px;
+  background-color: #3d2963;
+  color: white;
+  @include scaling();
+}
+
+a {
+  color: white;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.top-header {
+  display: flex;
+  justify-content: space-around;
+  width: 400px;
+  
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  font-family: 'Pacifico', cursive;
+  font-size: 3.4rem;
+  text-transform: uppercase;
+  transform: rotate(-6deg);
+  animation: logoAnimation 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes logoAnimation {
+  0% {
+   @include shadow($secondShadowPosition, $secondShadowPosition);
+  }
+ 10% {
+   @include shadow($firstShadowPosition, $fourShadowPosition);
+  }
+ 20% {
+   @include shadow($secondShadowPosition, $threeShadowPosition);
+ }
+ 30% {
+   @include shadow($firstShadowPosition, $fourShadowPosition);
+ }
+ 40% {
+   @include shadow($fourShadowPosition, $firstShadowPosition);
+ }
+ 50% {
+   @include shadow($firstShadowPosition, $threeShadowPosition);
+ }
+ 60% {
+   @include shadow($fourShadowPosition, $firstShadowPosition);
+ }
+ 70% {
+   @include shadow($firstShadowPosition, $threeShadowPosition);
+ }
+ 80% {
+   @include shadow($secondShadowPosition, $secondShadowPosition);
+ }
+ 90% {
+   @include shadow($firstShadowPosition, $fourShadowPosition);
+ }
+ 100% {
+   @include shadow($fourShadowPosition, $firstShadowPosition);
+ }
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  @include fontSize();
+}
+
+.manual {
+  width: 400px;
+  text-align: center;
+  margin-bottom: 1rem;
+  @include fontSize();
+
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+  @include fontSize();
+}
